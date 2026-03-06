@@ -299,6 +299,16 @@ body{font-family:'DM Sans',sans-serif;background:var(--ivory);color:var(--dk);ov
       <button class="btnP" onclick="go('niche',document.querySelectorAll('.ni')[1])">Commencer →</button>
     </div>
   </div>
+  <div id="project-bar" style="background:var(--champ);border-bottom:1.5px solid rgba(200,169,81,.2);padding:.6rem 2.2rem;display:flex;align-items:center;gap:.8rem;flex-wrap:wrap">
+    <span style="font-size:.72rem;font-weight:700;color:var(--mauve);text-transform:uppercase;letter-spacing:.06em">📁 Projet actif :</span>
+    <div id="proj-name-display" style="font-size:.8rem;font-weight:700;color:var(--dk);cursor:pointer;padding:.25rem .7rem;background:white;border:1.5px solid rgba(200,169,81,.4);border-radius:50px" onclick="renameProject()" title="Cliquer pour renommer">—</div>
+    <div style="display:flex;gap:.5rem;margin-left:auto;flex-wrap:wrap">
+      <button onclick="saveProject()" style="background:white;border:1.5px solid rgba(200,169,81,.5);color:var(--mauve);padding:.28rem .8rem;border-radius:50px;font-size:.7rem;font-weight:700;cursor:pointer">💾 Sauvegarder</button>
+      <button onclick="switchProject()" style="background:white;border:1.5px solid rgba(200,169,81,.5);color:var(--mauve);padding:.28rem .8rem;border-radius:50px;font-size:.7rem;font-weight:700;cursor:pointer">📂 Mes projets</button>
+      <button onclick="newProject()" style="background:var(--rose);border:none;color:white;padding:.28rem .8rem;border-radius:50px;font-size:.7rem;font-weight:700;cursor:pointer">✦ Nouveau projet</button>
+    </div>
+    <div id="proj-save-indicator" style="font-size:.68rem;color:#2ECC71;display:none">✅ Sauvegardé</div>
+  </div>
   <div class="content">
 
 <!-- ═══════════════════ DASHBOARD ═══════════════════ -->
@@ -402,7 +412,10 @@ body{font-family:'DM Sans',sans-serif;background:var(--ivory);color:var(--dk);ov
           <div class="ci" onclick="chk(this)"><div class="cb"></div>Blocages avec l'argent et la valeur de soi</div>
           <div class="ci" onclick="chk(this)"><div class="cb"></div>Procrastination chronique, perfectionnisme</div>
         </div>
+            <div style="display:flex;justify-content:flex-end;margin-top:1.2rem;padding-top:.9rem;border-top:1px solid rgba(200,169,81,.15)">
+        <button onclick="saveProject()" style="background:var(--rose);border:none;color:white;padding:.5rem 1.4rem;border-radius:50px;font-size:.76rem;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:.4rem">💾 Sauvegarder</button>
       </div>
+    </div>
       <div class="os" style="margin-top:1.25rem">
         <h3>📱 Où elle se trouve en ligne</h3>
         <div class="cl">
@@ -442,7 +455,10 @@ body{font-family:'DM Sans',sans-serif;background:var(--ivory);color:var(--dk);ov
           <button class="btn-regen" onclick="callAI('offer','offer-r','offer-l')">🔄 Autre version</button>
           <button class="btn-copy-r" onclick="copyR('offer-r')">📋 Copier</button>
         </div>
+            <div style="display:flex;justify-content:flex-end;margin-top:1.2rem;padding-top:.9rem;border-top:1px solid rgba(200,169,81,.15)">
+        <button onclick="saveProject()" style="background:var(--rose);border:none;color:white;padding:.5rem 1.4rem;border-radius:50px;font-size:.76rem;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:.4rem">💾 Sauvegarder</button>
       </div>
+    </div>
       <div class="aibox" style="margin-top:1.3rem">
         <h3>📝 Génère ta Page de Vente Complète</h3>
         <p>Structure Hormozi + Brunson — haute conversion.</p>
@@ -542,7 +558,10 @@ body{font-family:'DM Sans',sans-serif;background:var(--ivory);color:var(--dk);ov
           </div>
           <div class="alert ok" style="margin-top:.9rem">✅ En résumé : <strong id="dailyA">1</strong> action de vente ciblée par jour suffit pour atteindre ton objectif.</div>
         </div>
+            <div style="display:flex;justify-content:flex-end;margin-top:1.2rem;padding-top:.9rem;border-top:1px solid rgba(200,169,81,.15)">
+        <button onclick="saveProject()" style="background:var(--rose);border:none;color:white;padding:.5rem 1.4rem;border-radius:50px;font-size:.76rem;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:.4rem">💾 Sauvegarder</button>
       </div>
+    </div>
       <div class="pbox">
         <div class="tbadge">Analyse IA</div>
         <h3>🤖 Stratégie de Prix Personnalisée</h3>
@@ -860,7 +879,10 @@ P.S. Même si tu n'es pas prête à investir maintenant — viens quand même. T
           </div>
         </div>
 
+            <div style="display:flex;justify-content:flex-end;margin-top:1.2rem;padding-top:.9rem;border-top:1px solid rgba(200,169,81,.15)">
+        <button onclick="saveProject()" style="background:var(--rose);border:none;color:white;padding:.5rem 1.4rem;border-radius:50px;font-size:.76rem;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:.4rem">💾 Sauvegarder</button>
       </div>
+    </div>
     </div>
   </div>
   <div style="text-align:right"><button class="btnP" onclick="go('launch',document.querySelectorAll('.ni')[6])">Continuer → Lancement 🚀</button></div>
@@ -1033,7 +1055,8 @@ P.S. Même si tu n'es pas prête à investir maintenant — viens quand même. T
     </div>
   </div>
 
-  <div style="text-align:right;margin-top:1rem"><button class="btnP" onclick="go('sales100',document.querySelectorAll('.ni')[7])">Continuer → 100 Ventes 🏆</button></div>
+  <div style="text-align:right;margin-top:1rem"><button class="btnP" onclick="go('sales100',document.querySelectorAll('.ni')[7])">Continuer → 100 Ventes 🏆</button>
+      <div style="display:flex;justify-content:flex-end;margin-top:1.2rem;padding-top:.9rem;border-top:1px solid rgba(200,169,81,.15)"><button onclick="saveProject()" style="background:var(--rose);border:none;color:white;padding:.5rem 1.4rem;border-radius:50px;font-size:.76rem;font-weight:700;cursor:pointer">💾 Sauvegarder</button></div></div>
 </div>
 
 
@@ -1076,7 +1099,10 @@ P.S. Même si tu n'es pas prête à investir maintenant — viens quand même. T
           <div class="ci" onclick="chk(this)"><div class="cb"></div>Story derrière les coulisses</div>
           <div class="ci" onclick="chk(this)"><div class="cb"></div>Identifier 5 nouveaux prospects qualifiés</div>
         </div>
+            <div style="display:flex;justify-content:flex-end;margin-top:1.2rem;padding-top:.9rem;border-top:1px solid rgba(200,169,81,.15)">
+        <button onclick="saveProject()" style="background:var(--rose);border:none;color:white;padding:.5rem 1.4rem;border-radius:50px;font-size:.76rem;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:.4rem">💾 Sauvegarder</button>
       </div>
+    </div>
       <div class="os" style="margin-top:1.25rem">
         <h3>📈 Stratégies d'Accélération</h3>
         <div class="three">
@@ -1144,7 +1170,10 @@ P.S. Même si tu n'es pas prête à investir maintenant — viens quand même. T
           <div style="display:flex;flex-direction:column;align-items:center;flex:1"><div class="bar" style="background:var(--rose);height:108px;width:100%"><span class="bv">10k€</span></div><div class="bl">M6</div></div>
         </div>
         <div style="font-size:.67rem;color:var(--sage);text-align:center;margin-top:.45rem">✦ Projection : +1 vente/mois à 1 997€</div>
+            <div style="display:flex;justify-content:flex-end;margin-top:1.2rem;padding-top:.9rem;border-top:1px solid rgba(200,169,81,.15)">
+        <button onclick="saveProject()" style="background:var(--rose);border:none;color:white;padding:.5rem 1.4rem;border-radius:50px;font-size:.76rem;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:.4rem">💾 Sauvegarder</button>
       </div>
+    </div>
       <div class="os" style="margin-top:1.25rem">
         <h3>🔍 Lire et Interpréter ses KPIs</h3>
         <div class="alert i">🟢 <strong>CA en hausse mais peu d'appels</strong> → Ton contenu attire mais tu ne prospectes pas assez. Augmente les DMs.</div>
@@ -1276,7 +1305,8 @@ P.S. Même si tu n'es pas prête à investir maintenant — viens quand même. T
         </div>
       </div>
     </div>
-  </div>
+  
+      <div style="display:flex;justify-content:flex-end;margin-top:1.2rem;padding-top:.9rem;border-top:1px solid rgba(200,169,81,.15)"><button onclick="saveProject()" style="background:var(--rose);border:none;color:white;padding:.5rem 1.4rem;border-radius:50px;font-size:.76rem;font-weight:700;cursor:pointer">💾 Sauvegarder</button></div></div>
 </div>
 
 <!-- ═══════════════════ RESOURCES ═══════════════════ -->
@@ -1337,7 +1367,8 @@ P.S. Même si tu n'es pas prête à investir maintenant — viens quand même. T
     <div class="aibox"><h3>🖥️ Structure Page de Vente HC</h3><p>Les 11 sections des meilleures pages de vente coaching monde.</p>
       <div class="air show"><strong>1. HEADLINE :</strong> La transformation en 1 phrase + pour qui<br><em>"En 90 jours, passe de [douleur] à [rêve] — même si [objection principale]"</em><br><br><strong>2. SUB-HEADLINE :</strong> Valide la douleur, crée de l'espoir<br><strong>3. EMPATHIE :</strong> "Si tu lis ces mots, c'est que..." (miroir)<br><strong>4. 5 SIGNES :</strong> Qu'elle a besoin de toi<br><strong>5. TA MÉTHODE :</strong> Présentation en 3 piliers uniques<br><strong>6. INCLUS :</strong> Détails + valeur € de chaque élément<br><strong>7. POUR QUI / PAS POUR QUI :</strong> Qualifie ton audience<br><strong>8. TÉMOIGNAGES :</strong> 3-7 preuves sociales détaillées<br><strong>9. PRIX :</strong> Valeur totale → ton investissement + facilités<br><strong>10. FAQ :</strong> 5 objections principales traitées<br><strong>11. CTA FINAL :</strong> "Je veux transformer ma vie" + urgence</div>
     </div>
-  </div>
+  
+      <div style="display:flex;justify-content:flex-end;margin-top:1.2rem;padding-top:.9rem;border-top:1px solid rgba(200,169,81,.15)"><button onclick="saveProject()" style="background:var(--rose);border:none;color:white;padding:.5rem 1.4rem;border-radius:50px;font-size:.76rem;font-weight:700;cursor:pointer">💾 Sauvegarder</button></div></div>
 </div>
 
 <!-- ═══════════════════ MINDSET ═══════════════════ -->
@@ -1379,7 +1410,8 @@ P.S. Même si tu n'es pas prête à investir maintenant — viens quand même. T
         <div class="rc"><div class="rtype" style="background:var(--rlight);color:var(--rose)">📒</div><div><div style="font-weight:700;font-size:.82rem">You Are a Badass — Jen Sincero</div><div style="font-size:.7rem;color:#888">Arrête de douter de ta grandeur et construis ta vie</div></div></div>
       </div>
     </div>
-  </div>
+  
+      <div style="display:flex;justify-content:flex-end;margin-top:1.2rem;padding-top:.9rem;border-top:1px solid rgba(200,169,81,.15)"><button onclick="saveProject()" style="background:var(--rose);border:none;color:white;padding:.5rem 1.4rem;border-radius:50px;font-size:.76rem;font-weight:700;cursor:pointer">💾 Sauvegarder</button></div></div>
 </div>
 <!-- PROFIL COACH ════════════════════════════════════ -->
 <div class="page" id="page-profil">
@@ -1441,123 +1473,393 @@ P.S. Même si tu n'es pas prête à investir maintenant — viens quand même. T
   </div>
 </div>
 
+
 <!-- PROGRAMMES & MODULES ════════════════════════════ -->
 <div class="page" id="page-programmes">
-  <div class="aff"><div style="font-size:1.2rem">🎓</div><div><div class="aff-t">"Un bon programme ne transmet pas seulement un savoir — il transforme une identité."</div><div class="aff-a">— Principe de l'apprentissage transformationnel</div></div></div>
-  <div class="sec-t" style="margin-bottom:.3rem">Générateur de Programmes & Modules</div>
-  <div class="sec-s" style="margin-bottom:1.6rem">L'IA crée des programmes complets basés sur ton profil, ta niche et ton avatar</div>
+  <div class="aff"><div style="font-size:1.2rem">🎓</div><div><div class="aff-t">"Un programme ne transmet pas un savoir — il transforme une identité."</div><div class="aff-a">— Principe de l'apprentissage transformationnel</div></div></div>
+  <div class="sec-t" style="margin-bottom:.3rem">Studio de Création de Contenu IA</div>
+  <div class="sec-s" style="margin-bottom:.6rem">L'IA lit tout ce que tu as rempli et crée du contenu <strong>à ta voix</strong>, avec des méthodes prouvées</div>
+
+  <!-- CONTEXT PILL -->
+  <div id="prog-ctx-pill" style="background:var(--glight);border:1.5px solid rgba(200,169,81,.3);border-radius:50px;padding:.45rem 1rem;font-size:.72rem;color:var(--mauve);font-weight:600;display:inline-flex;align-items:center;gap:.5rem;margin-bottom:1.4rem;cursor:pointer" onclick="showCtxPreview()">
+    <span id="prog-ctx-dot" style="width:8px;height:8px;border-radius:50%;background:#ccc"></span>
+    <span id="prog-ctx-label">Vérifie le contexte chargé →</span>
+  </div>
+
+  <!-- TABS -->
   <div class="ptabs" id="prog-tabs">
-    <div class="pt act" onclick="switchProgTab('programme',this)">🏛️ Programme</div>
+    <div class="pt act" onclick="switchProgTab('plan',this)">🗺️ Plan Contenu</div>
+    <div class="pt" onclick="switchProgTab('programme',this)">🏛️ Programme</div>
     <div class="pt" onclick="switchProgTab('module',this)">📦 Module</div>
     <div class="pt" onclick="switchProgTab('seance',this)">🎯 Séance</div>
     <div class="pt" onclick="switchProgTab('contenu',this)">✍️ Contenu</div>
-    <div class="pt" onclick="switchProgTab('bibliotheque',this)">📚 Bibliothèque</div>
+    <div class="pt" onclick="switchProgTab('vente',this)">💰 Vente</div>
+    <div class="pt" onclick="switchProgTab('email',this)">📧 Email</div>
+    <div class="pt" onclick="switchProgTab('social',this)">📱 Social</div>
+    <div class="pt" onclick="switchProgTab('bibliotheque',this)">📚 Biblio</div>
   </div>
 
-  <div id="ptab-programme">
+  <!-- ═══ TAB: PLAN CONTENU (auto depuis profil) ═══ -->
+  <div id="ptab-plan">
     <div class="os">
-      <div class="sec-h"><div><div class="sec-t">🏛️ Programme Complet</div><div class="sec-s">Structure entière d'un programme de coaching ou formation</div></div></div>
+      <div class="sec-h"><div>
+        <div class="sec-t">🗺️ Plan de Contenu Personnalisé</div>
+        <div class="sec-s">L'IA analyse ton profil complet et génère un plan sur mesure avec sujets, frameworks et priorités</div>
+      </div></div>
+      <div style="background:var(--glight);border-radius:10px;padding:.9rem 1.1rem;margin-bottom:1.2rem;font-size:.78rem;line-height:1.7;color:var(--dk)">
+        ✦ Ce générateur lit <strong>automatiquement</strong> tout ce que tu as rempli : profil, niche, avatar, offre — aucune saisie supplémentaire nécessaire.
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem">
+        <div>
+          <label class="plab">Période couverte</label>
+          <select class="pfield" id="plan-periode">
+            <option>7 jours</option><option>30 jours</option><option>90 jours</option><option>6 mois</option>
+          </select>
+        </div>
+        <div>
+          <label class="plab">Priorité canaux</label>
+          <select class="pfield" id="plan-canal">
+            <option>Tous les canaux</option><option>Instagram prioritaire</option><option>Email prioritaire</option><option>Coaching / programmes</option><option>Vente prioritaire</option>
+          </select>
+        </div>
+      </div>
+      <div style="margin-bottom:1.2rem">
+        <label class="plab">Objectif principal de cette période</label>
+        <select class="pfield" id="plan-objectif">
+          <option>Lancer un programme et trouver mes premiers clients</option>
+          <option>Faire croître mon audience et ma visibilité</option>
+          <option>Maximiser mes ventes et mon chiffre d'affaires</option>
+          <option>Construire ma crédibilité et mon autorité</option>
+          <option>Fidéliser mes clients existants</option>
+        </select>
+      </div>
+      <button class="btnP" style="width:100%;margin-bottom:.8rem" onclick="callAI('plan-contenu','plan-r','plan-l')">
+        🗺️ Générer mon Plan de Contenu Personnalisé
+      </button>
+      <div class="ail" id="plan-l">✦ L'IA analyse ton profil et construit ton plan...</div>
+      <div class="air" id="plan-r"></div>
+    </div>
+
+    <!-- IDEES SUJETS AUTO -->
+    <div class="os">
+      <div class="sec-h"><div>
+        <div class="sec-t">💡 Générateur d'Idées de Sujets</div>
+        <div class="sec-s">Basé sur les douleurs et rêves de ton avatar</div>
+      </div></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin-bottom:1.2rem">
+        <div>
+          <label class="plab">Type de contenu</label>
+          <select class="pfield" id="idee-type">
+            <option>Posts réseaux sociaux</option><option>Emails</option><option>Vidéos / lives</option><option>Modules de formation</option><option>Posts de vente</option>
+          </select>
+        </div>
+        <div>
+          <label class="plab">Angle</label>
+          <select class="pfield" id="idee-angle">
+            <option>Éducatif (valeur pure)</option><option>Storytelling (avant/après)</option><option>Inspiration / mindset</option><option>Erreurs à éviter</option><option>Témoignage / preuve sociale</option><option>Vente directe</option>
+          </select>
+        </div>
+        <div>
+          <label class="plab">Nombre d'idées</label>
+          <select class="pfield" id="idee-nb">
+            <option>10 idées</option><option>20 idées</option><option>30 idées</option>
+          </select>
+        </div>
+      </div>
+      <button class="btnP" style="width:100%;margin-bottom:.8rem" onclick="callAI('idees-sujets','idees-r','idees-l')">
+        💡 Générer mes Idées de Sujets
+      </button>
+      <div class="ail" id="idees-l">✦ L'IA génère tes idées...</div>
+      <div class="air" id="idees-r"></div>
+    </div>
+  </div>
+
+  <!-- ═══ TAB: PROGRAMME ═══ -->
+  <div id="ptab-programme" style="display:none">
+    <div class="os">
+      <div class="sec-h"><div>
+        <div class="sec-t">🏛️ Programme Complet Clé en Main</div>
+        <div class="sec-s">Structure, modules, prix, lancement — tout généré depuis ton profil</div>
+      </div></div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem">
         <div><label class="plab">Nom du programme</label><input class="pfield" id="pg-nom" placeholder="Ex: Renaissance Intensif 90j" /></div>
-        <div><label class="plab">Type</label><select class="pfield" id="pg-type"><option>Coaching individuel</option><option>Formation en groupe</option><option>Programme en ligne</option><option>Mastermind</option><option>Bootcamp intensif</option><option>Accompagnement VIP</option></select></div>
+        <div><label class="plab">Type</label>
+          <select class="pfield" id="pg-type">
+            <option>Coaching individuel 1:1</option><option>Programme de groupe</option><option>Formation en ligne</option><option>Mastermind</option><option>Bootcamp intensif</option><option>Accompagnement VIP</option>
+          </select>
+        </div>
       </div>
       <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin-bottom:1rem">
-        <div><label class="plab">Durée</label><select class="pfield" id="pg-duree"><option>3 semaines</option><option>4 semaines</option><option>6 semaines</option><option>8 semaines</option><option>3 mois</option><option>6 mois</option><option>1 an</option></select></div>
-        <div><label class="plab">Modules</label><select class="pfield" id="pg-modules"><option>3</option><option>4</option><option>5</option><option>6</option><option>8</option><option>10</option><option>12</option></select></div>
-        <div><label class="plab">Niveau client</label><select class="pfield" id="pg-niveau"><option>Débutant</option><option>Intermédiaire</option><option>Avancé</option><option>Tous niveaux</option></select></div>
+        <div><label class="plab">Durée</label>
+          <select class="pfield" id="pg-duree"><option>3 semaines</option><option>4 semaines</option><option>6 semaines</option><option>8 semaines</option><option>3 mois</option><option>6 mois</option><option>1 an</option></select>
+        </div>
+        <div><label class="plab">Nb modules</label>
+          <select class="pfield" id="pg-modules"><option>3</option><option>4</option><option>5</option><option>6</option><option>8</option><option>10</option><option>12</option></select>
+        </div>
+        <div><label class="plab">Framework</label>
+          <select class="pfield" id="pg-framework">
+            <option>Auto (IA choisit)</option><option>StoryBrand</option><option>AIDA</option><option>Hero's Journey</option><option>Framework 3 actes</option><option>Before/After/Bridge</option><option>SPIN Selling</option>
+          </select>
+        </div>
       </div>
-      <div style="margin-bottom:1rem"><label class="plab">Transformation promise (résultat final)</label><textarea class="pfield" id="pg-transfo" rows="3" placeholder="Ex: Passer de femme perdue après immigration à coach certifiée avec ses 5 premiers clients en 90 jours"></textarea></div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem">
-        <div><label class="plab">Problème principal résolu</label><textarea class="pfield" id="pg-probleme" rows="3" placeholder="Ex: Manque de clarté, peur de l'imposture, isolement..."></textarea></div>
-        <div><label class="plab">Livrables inclus</label><textarea class="pfield" id="pg-livrables" rows="3" placeholder="Ex: Workbook PDF, séances Zoom, groupe WhatsApp, templates..."></textarea></div>
+      <div style="margin-bottom:1rem"><label class="plab">Transformation promise (laisser vide = l'IA la génère depuis ton profil)</label>
+        <textarea class="pfield" id="pg-transfo" rows="2" placeholder="Laisser vide pour génération automatique depuis ton avatar..."></textarea>
       </div>
-      <div style="margin-bottom:1.2rem"><label class="plab">Éléments spéciaux à intégrer</label><input class="pfield" id="pg-special" placeholder="Ex: Journaling, méditations, challenges, certification..." /></div>
-      <button class="btnP" style="width:100%;margin-bottom:.8rem" onclick="callAI('pg-programme','pg-prog-r','pg-prog-l')">✨ Générer mon Programme Complet</button>
-      <div class="ail" id="pg-prog-l">⏳ L'IA structure ton programme...</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.2rem">
+        <div><label class="plab">Livrables inclus</label>
+          <textarea class="pfield" id="pg-livrables" rows="2" placeholder="Ex: Workbook PDF, séances Zoom, groupe privé..."></textarea>
+        </div>
+        <div><label class="plab">Éléments spéciaux</label>
+          <input class="pfield" id="pg-special" placeholder="Ex: Journaling, méditations, certification..." />
+        </div>
+      </div>
+      <button class="btnP" style="width:100%;margin-bottom:.8rem" onclick="callAI('pg-programme','pg-prog-r','pg-prog-l')">
+        🏛️ Générer mon Programme Complet
+      </button>
+      <div class="ail" id="pg-prog-l">✦ L'IA structure ton programme...</div>
       <div class="air" id="pg-prog-r"></div>
     </div>
   </div>
 
+  <!-- ═══ TAB: MODULE ═══ -->
   <div id="ptab-module" style="display:none">
     <div class="os">
-      <div class="sec-h"><div><div class="sec-t">📦 Module Détaillé</div><div class="sec-s">Structure complète avec objectifs, contenu, exercices</div></div></div>
+      <div class="sec-h"><div>
+        <div class="sec-t">📦 Module Détaillé</div>
+        <div class="sec-s">Plan pédagogique complet, exercices, script vidéo</div>
+      </div></div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem">
-        <div><label class="plab">Titre du module</label><input class="pfield" id="mod-titre" placeholder="Ex: Module 2 — Reconstruire son identité" /></div>
-        <div><label class="plab">Position dans le programme</label><input class="pfield" id="mod-num" placeholder="Ex: Module 2 sur 6" /></div>
+        <div><label class="plab">Titre du module</label><input class="pfield" id="mod-titre" placeholder="Ex: Module 2 — Reconstruire ton identité" /></div>
+        <div><label class="plab">Position</label><input class="pfield" id="mod-num" placeholder="Ex: Module 2 sur 6" /></div>
       </div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem">
-        <div><label class="plab">Durée</label><select class="pfield" id="mod-duree"><option>1 heure</option><option>2 heures</option><option>3 heures</option><option>1 journée</option><option>1 semaine</option><option>2 semaines</option></select></div>
-        <div><label class="plab">Format</label><select class="pfield" id="mod-format"><option>Vidéo + PDF workbook</option><option>Séance live Zoom</option><option>Audio + exercices</option><option>Texte + quiz</option><option>Atelier pratique</option></select></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin-bottom:1rem">
+        <div><label class="plab">Durée</label>
+          <select class="pfield" id="mod-duree"><option>1h</option><option>2h</option><option>3h</option><option>1 journée</option><option>1 semaine</option></select>
+        </div>
+        <div><label class="plab">Format</label>
+          <select class="pfield" id="mod-format"><option>Vidéo + PDF workbook</option><option>Live Zoom</option><option>Audio + exercices</option><option>Atelier pratique</option></select>
+        </div>
+        <div><label class="plab">Méthode pédagogique</label>
+          <select class="pfield" id="mod-methode"><option>Auto (IA choisit)</option><option>Kolb (apprendre par expérience)</option><option>Bloom (niveaux de compréhension)</option><option>70/20/10</option><option>Apprentissage actif</option></select>
+        </div>
       </div>
-      <div style="margin-bottom:1rem"><label class="plab">Objectif principal (que saura/pourra faire le client après ?)</label><textarea class="pfield" id="mod-objectif" rows="3" placeholder="Ex: À la fin de ce module, le client aura clarifié ses valeurs profondes et rédigé sa déclaration d'identité personnelle"></textarea></div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem">
-        <div><label class="plab">Thèmes & concepts à couvrir</label><textarea class="pfield" id="mod-themes" rows="3" placeholder="Ex: Valeurs, croyances limitantes, identité de transition..."></textarea></div>
-        <div><label class="plab">Exercices souhaités</label><textarea class="pfield" id="mod-exercices" rows="3" placeholder="Ex: Timeline de vie, lettre du moi futur, roue des valeurs..."></textarea></div>
+      <div style="margin-bottom:1rem"><label class="plab">Objectif principal du module</label>
+        <textarea class="pfield" id="mod-objectif" rows="2" placeholder="Ex: À la fin, le client aura clarifié ses 3 valeurs profondes et sa déclaration d'identité"></textarea>
       </div>
-      <div style="margin-bottom:1.2rem"><label class="plab">Lien avec le module précédent/suivant</label><input class="pfield" id="mod-contexte" placeholder="Ex: Suite du module clarté de niche, prépare le business plan..." /></div>
-      <button class="btnP" style="width:100%;margin-bottom:.8rem" onclick="callAI('pg-module','pg-mod-r','pg-mod-l')">📦 Générer ce Module en Détail</button>
-      <div class="ail" id="pg-mod-l">⏳ L'IA développe ton module...</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.2rem">
+        <div><label class="plab">Thèmes à couvrir</label>
+          <textarea class="pfield" id="mod-themes" rows="2" placeholder="Ex: Valeurs, croyances limitantes, identité de transition..."></textarea>
+        </div>
+        <div><label class="plab">Exercices souhaités</label>
+          <textarea class="pfield" id="mod-exercices" rows="2" placeholder="Ex: Timeline de vie, lettre du moi futur..."></textarea>
+        </div>
+      </div>
+      <button class="btnP" style="width:100%;margin-bottom:.8rem" onclick="callAI('pg-module','pg-mod-r','pg-mod-l')">
+        📦 Générer ce Module en Détail
+      </button>
+      <div class="ail" id="pg-mod-l">✦ L'IA développe ton module...</div>
       <div class="air" id="pg-mod-r"></div>
     </div>
   </div>
 
+  <!-- ═══ TAB: SÉANCE ═══ -->
   <div id="ptab-seance" style="display:none">
     <div class="os">
-      <div class="sec-h"><div><div class="sec-t">🎯 Séance de Coaching</div><div class="sec-s">Script complet avec questions puissantes et déroulé minuté</div></div></div>
+      <div class="sec-h"><div>
+        <div class="sec-t">🎯 Script de Séance de Coaching</div>
+        <div class="sec-s">Déroulé minuté, 15 questions puissantes, gestion des blocages</div>
+      </div></div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem">
-        <div><label class="plab">Type de séance</label><select class="pfield" id="sea-type"><option>Séance découverte</option><option>1ère séance onboarding</option><option>Suivi hebdomadaire</option><option>Transformation profonde</option><option>Déblocage</option><option>Bilan / clôture</option><option>Gestion de crise</option></select></div>
-        <div><label class="plab">Durée</label><select class="pfield" id="sea-duree"><option>30 min</option><option>45 min</option><option>60 min</option><option>90 min</option><option>2 heures</option></select></div>
+        <div><label class="plab">Type de séance</label>
+          <select class="pfield" id="sea-type"><option>Découverte / Appel gratuit</option><option>1ère séance onboarding</option><option>Suivi hebdomadaire</option><option>Séance de transformation profonde</option><option>Déblocage d'urgence</option><option>Bilan / clôture</option></select>
+        </div>
+        <div><label class="plab">Durée</label>
+          <select class="pfield" id="sea-duree"><option>30 min</option><option>45 min</option><option>60 min</option><option>90 min</option><option>2 heures</option></select>
+        </div>
       </div>
-      <div style="margin-bottom:1rem"><label class="plab">Objectif de la séance</label><textarea class="pfield" id="sea-objectif" rows="3" placeholder="Ex: Aider la cliente à identifier et dépasser sa peur de l'imposture pour oser se lancer"></textarea></div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem">
-        <div><label class="plab">Profil du client</label><textarea class="pfield" id="sea-client" rows="3" placeholder="Ex: Femme 38 ans, immigrante, ex-ingénieure, veut lancer coaching mais bloquée..."></textarea></div>
-        <div><label class="plab">Outils / techniques souhaités</label><textarea class="pfield" id="sea-outils" rows="3" placeholder="Ex: Socratique, PNL, visualisation, roue de vie, CNV..."></textarea></div>
+        <div><label class="plab">Objectif de la séance</label>
+          <textarea class="pfield" id="sea-objectif" rows="2" placeholder="Ex: Débloquer la peur de l'imposture pour oser se lancer"></textarea>
+        </div>
+        <div><label class="plab">Outils / techniques</label>
+          <select class="pfield" id="sea-outils">
+            <option>Auto (IA choisit les meilleurs)</option><option>Socratique pur</option><option>PNL + visualisation</option><option>Roue de la vie</option><option>CNV (Communication Non Violente)</option><option>Timeline + ancrage</option><option>Gestalt</option>
+          </select>
+        </div>
       </div>
-      <div style="margin-bottom:1.2rem"><label class="plab">Points spécifiques à aborder</label><input class="pfield" id="sea-points" placeholder="Ex: Revenir sur progrès, aborder la relation avec l'argent..." /></div>
-      <button class="btnP" style="width:100%;margin-bottom:.8rem" onclick="callAI('pg-seance','pg-sea-r','pg-sea-l')">🎯 Générer le Script de Séance</button>
-      <div class="ail" id="pg-sea-l">⏳ L'IA prépare ta séance...</div>
+      <div style="margin-bottom:1.2rem"><label class="plab">Contexte client (laisser vide = utilise ton avatar)</label>
+        <input class="pfield" id="sea-client" placeholder="Laisser vide pour utiliser automatiquement ton avatar..." />
+      </div>
+      <button class="btnP" style="width:100%;margin-bottom:.8rem" onclick="callAI('pg-seance','pg-sea-r','pg-sea-l')">
+        🎯 Générer le Script de Séance
+      </button>
+      <div class="ail" id="pg-sea-l">✦ L'IA prépare ta séance...</div>
       <div class="air" id="pg-sea-r"></div>
     </div>
   </div>
 
+  <!-- ═══ TAB: CONTENU ═══ -->
   <div id="ptab-contenu" style="display:none">
     <div class="os">
-      <div class="sec-h"><div><div class="sec-t">✍️ Contenu de Formation</div><div class="sec-s">Scripts vidéo, guides PDF, workbooks, quiz, emails pédagogiques</div></div></div>
+      <div class="sec-h"><div>
+        <div class="sec-t">✍️ Contenu de Formation</div>
+        <div class="sec-s">Scripts vidéo, workbooks, guides PDF, quiz — prêts à utiliser</div>
+      </div></div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem">
-        <div><label class="plab">Type de contenu</label><select class="pfield" id="ct-type"><option>Script vidéo pédagogique</option><option>Guide PDF / e-book</option><option>Workbook avec exercices</option><option>Quiz d'évaluation</option><option>Email pédagogique</option><option>Fiche récapitulative</option><option>Checklist actionnable</option><option>Méditation guidée (script)</option><option>Exercice de journaling</option></select></div>
-        <div><label class="plab">Sujet / thème</label><input class="pfield" id="ct-sujet" placeholder="Ex: Comment identifier ses valeurs fondamentales" /></div>
+        <div><label class="plab">Type de contenu</label>
+          <select class="pfield" id="ct-type">
+            <option>Script vidéo pédagogique</option><option>Guide PDF / e-book</option><option>Workbook avec exercices</option><option>Quiz d'évaluation</option><option>Fiche récapitulative</option><option>Checklist actionnable</option><option>Méditation guidée (script)</option><option>Exercice de journaling</option>
+          </select>
+        </div>
+        <div><label class="plab">Sujet</label>
+          <input class="pfield" id="ct-sujet" placeholder="Ex: Comment identifier ses valeurs fondamentales" />
+        </div>
       </div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem">
-        <div><label class="plab">Longueur</label><select class="pfield" id="ct-longueur"><option>Court (300-500 mots)</option><option>Moyen (500-1000 mots)</option><option>Long (1000-2000 mots)</option><option>Très long (2000+)</option></select></div>
-        <div><label class="plab">Ton / style</label><select class="pfield" id="ct-ton"><option>Pédagogique et bienveillant</option><option>Inspirant et motivant</option><option>Expert et sérieux</option><option>Conversationnel et chaleureux</option><option>Coaching direct et percutant</option></select></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin-bottom:1.2rem">
+        <div><label class="plab">Framework</label>
+          <select class="pfield" id="ct-framework">
+            <option>Auto (IA choisit)</option><option>AIDA</option><option>Before/After/Bridge</option><option>Hero's Journey</option><option>Problem/Solution/Result</option><option>StoryBrand</option>
+          </select>
+        </div>
+        <div><label class="plab">Longueur</label>
+          <select class="pfield" id="ct-longueur"><option>Court (300-500 mots)</option><option>Moyen (500-1000 mots)</option><option>Long (1000-2000 mots)</option><option>Très long (2000+)</option></select>
+        </div>
+        <div><label class="plab">Ton</label>
+          <select class="pfield" id="ct-ton"><option>Bienveillant et pédagogique</option><option>Inspirant et motivant</option><option>Expert et direct</option><option>Conversationnel et chaleureux</option><option>Coach percutant</option></select>
+        </div>
       </div>
-      <div style="margin-bottom:1rem"><label class="plab">Points clés à couvrir absolument</label><textarea class="pfield" id="ct-points" rows="3" placeholder="Ex: Définition, différence valeurs/croyances, exercice pratique, ancrage quotidien..."></textarea></div>
-      <div style="margin-bottom:1.2rem"><label class="plab">Cible précise</label><input class="pfield" id="ct-cible" placeholder="Ex: Femmes 35-50 ans en reconversion, débutantes en développement personnel" /></div>
-      <button class="btnP" style="width:100%;margin-bottom:.8rem" onclick="callAI('pg-contenu','pg-ct-r','pg-ct-l')">✍️ Générer ce Contenu</button>
-      <div class="ail" id="pg-ct-l">⏳ L'IA rédige ton contenu...</div>
+      <button class="btnP" style="width:100%;margin-bottom:.8rem" onclick="callAI('pg-contenu','pg-ct-r','pg-ct-l')">
+        ✍️ Générer ce Contenu
+      </button>
+      <div class="ail" id="pg-ct-l">✦ L'IA rédige ton contenu...</div>
       <div class="air" id="pg-ct-r"></div>
     </div>
   </div>
 
+  <!-- ═══ TAB: VENTE ═══ -->
+  <div id="ptab-vente" style="display:none">
+    <div class="os">
+      <div class="sec-h"><div>
+        <div class="sec-t">💰 Contenu de Vente</div>
+        <div class="sec-s">Pages de vente, scripts d'appel discovery, objections, closing</div>
+      </div></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem">
+        <div><label class="plab">Type de contenu vente</label>
+          <select class="pfield" id="vente-type">
+            <option>Page de vente complète</option><option>Script appel découverte (45 min)</option><option>Réponses aux 5 objections principales</option><option>Script de closing naturel</option><option>Email de vente persuasif</option><option>Post de vente réseaux sociaux</option><option>Séquence de relance (3 messages)</option>
+          </select>
+        </div>
+        <div><label class="plab">Framework de vente</label>
+          <select class="pfield" id="vente-framework">
+            <option>Auto (IA choisit)</option><option>SPIN Selling</option><option>Challenger Sale</option><option>Sandler</option><option>Story Selling</option><option>Value-Based Selling</option>
+          </select>
+        </div>
+      </div>
+      <div style="margin-bottom:1rem"><label class="plab">Objection principale à traiter (optionnel)</label>
+        <input class="pfield" id="vente-objection" placeholder="Ex: C'est trop cher / J'ai pas le temps / Je verrai plus tard..." />
+      </div>
+      <div style="margin-bottom:1.2rem"><label class="plab">Prix de l'offre visée</label>
+        <input class="pfield" id="vente-prix" placeholder="Ex: 2 500€ pour 3 mois de coaching individuel" />
+      </div>
+      <button class="btnP" style="width:100%;margin-bottom:.8rem" onclick="callAI('vente-contenu','vente-r','vente-l')">
+        💰 Générer mon Contenu de Vente
+      </button>
+      <div class="ail" id="vente-l">✦ L'IA rédige ton contenu de vente...</div>
+      <div class="air" id="vente-r"></div>
+    </div>
+  </div>
+
+  <!-- ═══ TAB: EMAIL ═══ -->
+  <div id="ptab-email" style="display:none">
+    <div class="os">
+      <div class="sec-h"><div>
+        <div class="sec-t">📧 Séquences & Emails</div>
+        <div class="sec-s">Emails de nurturing, séquences de lancement, newsletters</div>
+      </div></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem">
+        <div><label class="plab">Type d'email</label>
+          <select class="pfield" id="email-type">
+            <option>Email de bienvenue post-optin</option><option>Séquence nurturing 5 emails</option><option>Email de lancement programme</option><option>Newsletter hebdomadaire</option><option>Email de témoignage / preuve sociale</option><option>Email de relance abonnés inactifs</option><option>Séquence post-achat (onboarding)</option>
+          </select>
+        </div>
+        <div><label class="plab">Ton de l'email</label>
+          <select class="pfield" id="email-ton">
+            <option>Chaleureux et personnel</option><option>Inspirant et motivant</option><option>Éducatif et expert</option><option>Direct et percutant</option><option>Storytelling émotionnel</option>
+          </select>
+        </div>
+      </div>
+      <div style="margin-bottom:1.2rem"><label class="plab">Contexte spécifique (optionnel)</label>
+        <textarea class="pfield" id="email-contexte" rows="2" placeholder="Ex: Suite à un webinaire gratuit sur la reconversion, l'abonnée a téléchargé mon guide..."></textarea>
+      </div>
+      <button class="btnP" style="width:100%;margin-bottom:.8rem" onclick="callAI('email-studio','email-studio-r','email-studio-l')">
+        📧 Générer mes Emails
+      </button>
+      <div class="ail" id="email-studio-l">✦ L'IA rédige tes emails...</div>
+      <div class="air" id="email-studio-r"></div>
+    </div>
+  </div>
+
+  <!-- ═══ TAB: SOCIAL ═══ -->
+  <div id="ptab-social" style="display:none">
+    <div class="os">
+      <div class="sec-h"><div>
+        <div class="sec-t">📱 Contenu Réseaux Sociaux</div>
+        <div class="sec-s">Posts Instagram, LinkedIn, stories, hooks viraux — à ta voix</div>
+      </div></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin-bottom:1rem">
+        <div><label class="plab">Plateforme</label>
+          <select class="pfield" id="social-plat">
+            <option>Instagram</option><option>LinkedIn</option><option>Instagram + LinkedIn</option><option>Facebook</option><option>TikTok</option>
+          </select>
+        </div>
+        <div><label class="plab">Type de post</label>
+          <select class="pfield" id="social-type">
+            <option>Pack 5 posts variés</option><option>Post storytelling (avant/après)</option><option>Post éducatif (liste/tips)</option><option>Post de vente discret</option><option>Post engagement (question)</option><option>Stories (7 slides)</option><option>Carrousel (5-7 slides)</option><option>10 hooks viraux</option>
+          </select>
+        </div>
+        <div><label class="plab">Sujet / thème</label>
+          <input class="pfield" id="social-sujet" placeholder="Ex: Peur de l'imposture chez les coachs" />
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.2rem">
+        <div><label class="plab">Framework</label>
+          <select class="pfield" id="social-framework">
+            <option>Auto (IA choisit)</option><option>Hook / Problème / Solution / CTA</option><option>Before/After/Bridge</option><option>Storytelling 3 actes</option><option>AIDA</option><option>Controversé / Opinion forte</option>
+          </select>
+        </div>
+        <div><label class="plab">Objectif du post</label>
+          <select class="pfield" id="social-objectif">
+            <option>Visibilité et partages</option><option>Commentaires et engagement</option><option>Clics vers offre / lien</option><option>Abonnements newsletter</option><option>Prise de RDV discovery</option>
+          </select>
+        </div>
+      </div>
+      <button class="btnP" style="width:100%;margin-bottom:.8rem" onclick="callAI('social-studio','social-r','social-l')">
+        📱 Générer mon Contenu Social
+      </button>
+      <div class="ail" id="social-l">✦ L'IA crée tes posts...</div>
+      <div class="air" id="social-r"></div>
+    </div>
+  </div>
+
+  <!-- ═══ TAB: BIBLIOTHÈQUE ═══ -->
   <div id="ptab-bibliotheque" style="display:none">
     <div class="os">
-      <div class="sec-h"><div><div class="sec-t">📚 Ma Bibliothèque</div><div class="sec-s">Tout ce que tu as créé, sauvegardé ici</div></div></div>
+      <div class="sec-h"><div>
+        <div class="sec-t">📚 Ma Bibliothèque</div>
+        <div class="sec-s">Tout ton contenu créé, sauvegardé ici</div>
+      </div></div>
       <div id="biblio-empty" style="text-align:center;padding:2rem;color:var(--sage);font-size:.82rem">
         <div style="font-size:2rem;margin-bottom:.8rem">📭</div>
-        Génère du contenu dans les autres onglets, puis clique <strong style="color:var(--mauve)">💾 Sauvegarder</strong>
+        Génère du contenu dans les autres onglets, clique <strong style="color:var(--mauve)">📚 Sauvegarder</strong>
       </div>
       <div id="biblio-list" style="display:flex;flex-direction:column;gap:.8rem"></div>
     </div>
   </div>
 </div>
 
-
-  </div>
-</div>
-
 <script>
 // ─── NAVIGATION ───────────────────────────────
-const PM={dashboard:{t:'Bienvenue dans ton Empire ✦',s:'Chaque grand empire commence par une décision audacieuse.'},niche:{t:'Clarté & Niche 🎯',s:'La précision est le raccourci vers le succès.'},avatar:{t:'Avatar Client 👤',s:'Connais ton client mieux qu\'elle ne se connaît.'},offer:{t:'Offre Irrésistible 💎',s:'Une offre parfaite vend avant même d\'être présentée.'},pricing:{t:'Définir mon Prix 💰',s:'Ton prix est une déclaration de valeur — ose-le.'},funnel:{t:'Système de Vente 🔄',s:'Construis une machine qui vend pendant que tu te reposes.'},launch:{t:'Lancement 30j 🚀',s:'Lance avec impact, génère de la magie autour de toi.'},sales100:{t:'100 Premières Ventes 🏆',s:'Chaque vente est une vie transformée.'},kpitdb:{t:'KPIs & Tableau de Bord 📊',s:'Ce que tu mesures, tu peux l\'améliorer.'},prompts:{t:'Maître des Prompts IA 🤖',s:'L\'IA est ta meilleure alliée — apprends à lui parler.'},resources:{t:'Scripts & Templates 📝',s:'Les mots qui vendent — prêts à l\'emploi.'},mindset:{t:'Mindset & Énergie 🌸',s:'Ton état intérieur crée ta réalité extérieure.'},programmes:{t:'Programmes & Modules de Formation 🎓',s:'Crée tes programmes, modules et séances avec l\'IA.'},profil:{t:'Ton Profil Coach 🪪',s:'Commence ici — l\'IA parle avec ta voix dans tout l\'outil.'}};
+const PM={dashboard:{t:'Bienvenue dans ton Empire ✦',s:'Chaque grand empire commence par une décision audacieuse.'},niche:{t:'Clarté & Niche 🎯',s:'La précision est le raccourci vers le succès.'},avatar:{t:'Avatar Client 👤',s:'Connais ton client mieux qu\'elle ne se connaît.'},offer:{t:'Offre Irrésistible 💎',s:'Une offre parfaite vend avant même d\'être présentée.'},pricing:{t:'Définir mon Prix 💰',s:'Ton prix est une déclaration de valeur — ose-le.'},funnel:{t:'Système de Vente 🔄',s:'Construis une machine qui vend pendant que tu te reposes.'},launch:{t:'Lancement 30j 🚀',s:'Lance avec impact, génère de la magie autour de toi.'},sales100:{t:'100 Premières Ventes 🏆',s:'Chaque vente est une vie transformée.'},kpitdb:{t:'KPIs & Tableau de Bord 📊',s:'Ce que tu mesures, tu peux l\'améliorer.'},prompts:{t:'Maître des Prompts IA 🤖',s:'L\'IA est ta meilleure alliée — apprends à lui parler.'},resources:{t:'Scripts & Templates 📝',s:'Les mots qui vendent — prêts à l\'emploi.'},mindset:{t:'Mindset & Énergie 🌸',s:'Ton état intérieur crée ta réalité extérieure.'},programmes:{t:'Studio de Création de Contenu IA 🎓',s:'Plan contenu, programmes, emails, social — tout généré à ta voix avec des méthodes prouvées.'},profil:{t:'Ton Profil Coach 🪪',s:'Commence ici — l\'IA parle avec ta voix dans tout l\'outil.'}};
 function go(id,el){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.querySelectorAll('.ni').forEach(n=>n.classList.remove('act'));
@@ -1582,6 +1884,44 @@ const PROMPTS={
   dm:()=>`Tu es Jasmine Star, experte en DMs de vente pour coaches. Rédige 5 scripts DM différents en français:\n\n1. DM pour quelqu'un qui a commenté un post\n2. DM pour profil qualifié froid LinkedIn\n3. DM de relance après 1 semaine de silence\n4. DM pour demander l'appel discovery\n5. DM de réponse à "c'est trop cher"\n\nChaque DM: max 100 mots, naturel, sans vendre directement, crée la curiosité. Emojis adaptés. Format prêt à copier-coller.`,
   'email-gen':()=>`Tu es experte en email marketing pour coaches francophones haut de gamme. Crée 3 versions d'email de bienvenue post-optin en français:\n\n✨ Version Émotionnelle (storytelling, connexion)\n⚡ Version Directe (valeur immédiate, impact rapide)\n🌸 Version Holistique (vision, transformation, profondeur)\n\nPour chaque version: objet accrocheur + corps complet + P.S.\nStyle: authentique, chaleureux, professionnel mais humain. Max 300 mots/version.`,
   'post-gen':()=>`Tu es créatrice de contenus viraux #1 pour coaches femmes sur Instagram et LinkedIn. Crée 3 posts différents en français:\n\n1. Post STORYTELLING personnel (avant/après)\n2. Post LISTE de valeur (erreurs fréquentes)\n3. Post QUESTION engageante (commentaires)\n\nPour chaque post:\n🎣 Hook irrésistible (1ère ligne)\n📝 Corps complet prêt à publier\n🎯 CTA adapté\n#️⃣ 5 hashtags stratégiques\n\nStyle: authentique, inspirant. Emojis stratégiques.`,
+  'plan-contenu': () => {
+    const ctx=getContext();
+    const periode=document.getElementById('plan-periode')?.value||'30 jours';
+    const canal=document.getElementById('plan-canal')?.value||'Tous les canaux';
+    const objectif=document.getElementById('plan-objectif')?.value||'';
+    return `${ctx}\nTu es une stratège de contenu experte en coaching féminin francophone, combinant les méthodes de Gary Vaynerchuk, Marie Forleo et Amy Porterfield.\n\nGénère un PLAN DE CONTENU STRATÉGIQUE ET PERSONNALISÉ pour ${periode} orienté "${canal}".\n\nOBJECTIF DE LA PÉRIODE: ${objectif}\n\nLe plan doit:\n1. S'appuyer ENTIÈREMENT sur le profil, la niche, l'avatar et l'offre fournis\n2. Proposer des sujets précis qui parlent DIRECTEMENT aux douleurs et rêves de l'avatar\n3. Alterner: Éducatif / Storytelling / Inspiration / Vente / Engagement\n4. Inclure des frameworks concrets (AIDA, Before/After/Bridge, Hero's Journey, etc.)\n5. Donner des hooks d'accroche exacts pour chaque contenu clé\n\nFORMAT:\n🗓️ VUE D'ENSEMBLE (stratégie et logique du plan)\n📅 CALENDRIER DÉTAILLÉ (semaine par semaine avec contenu exact)\n🎣 10 HOOKS IRRÉSISTIBLES basés sur l'avatar\n⚡ TOP 3 ACTIONS PRIORITAIRES pour démarrer maintenant\n\nSois ultra-spécifique. Utilise la voix et l'histoire du coach.`;
+  },
+  'idees-sujets': () => {
+    const ctx=getContext();
+    const type=document.getElementById('idee-type')?.value||'Posts réseaux sociaux';
+    const angle=document.getElementById('idee-angle')?.value||'Éducatif';
+    const nb=document.getElementById('idee-nb')?.value||'10 idées';
+    return `${ctx}\nGénère ${nb} de sujets de contenu ULTRA-CIBLÉS pour "${type}" avec l'angle "${angle}".\n\nChaque idée doit:\n- Résonner directement avec les douleurs / rêves / blocages de l'avatar\n- Avoir un hook d'accroche irrésistible\n- Indiquer le framework recommandé (AIDA, Before/After, Storytelling 3 actes...)\n- Estimer le potentiel d'engagement (🔥 Viral / ⭐ Bon / 💡 Utile)\n\nFORMAT pour chaque idée:\n[Numéro] 🎯 SUJET: [Titre accrocheur]\n🎣 HOOK: [Première phrase qui arrête le scroll]\n📐 Framework: [Méthode recommandée]\n🎁 Valeur: [Ce que le lecteur gagne]\n[Potentiel]\n\nBase-toi sur le profil du coach et les douleurs exactes de son avatar.`;
+  },
+  'vente-contenu': () => {
+    const ctx=getContext();
+    const type=document.getElementById('vente-type')?.value||'';
+    const framework=document.getElementById('vente-framework')?.value||'Auto';
+    const objection=document.getElementById('vente-objection')?.value||'';
+    const prix=document.getElementById('vente-prix')?.value||'';
+    return `${ctx}\nTu es Dan Kennedy × Alex Hormozi × Russell Brunson — les meilleurs en copywriting et vente coaching haut de gamme.\n\nCrée: ${type}\nFramework: ${framework}\n${prix?'Prix visé: '+prix:''}\n${objection?'Objection principale à traiter: '+objection:''}\n\nLe contenu doit:\n- Utiliser le NOM, l'HISTOIRE et les PREUVES du coach\n- Parler DIRECTEMENT aux douleurs profondes de l'avatar\n- Inclure des déclencheurs psychologiques (urgence, rareté, preuve sociale, autorité)\n- Être prêt à copier-coller\n- Inclure plusieurs variantes si pertinent\n\nFournis le contenu COMPLET et IMMÉDIATEMENT UTILISABLE.`;
+  },
+  'email-studio': () => {
+    const ctx=getContext();
+    const type=document.getElementById('email-type')?.value||'';
+    const ton=document.getElementById('email-ton')?.value||'Chaleureux et personnel';
+    const contexte=document.getElementById('email-contexte')?.value||'';
+    return `${ctx}\nTu es Amy Porterfield × Tarzan Kay — expertes en email marketing pour coaches francophones.\n\nCrée: ${type}\nTon: ${ton}\n${contexte?'Contexte spécifique: '+contexte:''}\n\nChaque email doit:\n- Avoir un objet irrésistible (2 variantes A/B)\n- Commencer par une histoire personnelle courte du coach\n- Apporter de la vraie valeur ET avancer vers la prochaine étape\n- Avoir une signature authentique avec un P.S. engageant\n- Être entre 250-400 mots (sauf séquences)\n\nUtilise la voix unique du coach, son histoire et sa mission. Rédige en français naturel et chaleureux.`;
+  },
+  'social-studio': () => {
+    const ctx=getContext();
+    const plat=document.getElementById('social-plat')?.value||'Instagram';
+    const type=document.getElementById('social-type')?.value||'Pack 5 posts variés';
+    const sujet=document.getElementById('social-sujet')?.value||'';
+    const framework=document.getElementById('social-framework')?.value||'Auto';
+    const objectif=document.getElementById('social-objectif')?.value||'Visibilité';
+    return `${ctx}\nTu es une experte en contenu viral pour coaches sur ${plat}, combinant les méthodes de Jasmine Star, Jenna Kutcher et Gary Vee.\n\nCrée: ${type}\n${sujet?'Sujet: '+sujet:''}\nFramework: ${framework}\nObjectif: ${objectif}\n\nChaque post doit:\n- Commencer par un HOOK qui arrête le scroll (2-3 variantes proposées)\n- Utiliser l'histoire personnelle et la voix unique du coach\n- Parler directement aux douleurs / rêves de l'avatar\n- Se terminer par un CTA clair adapté à l'objectif\n- Inclure les hashtags recommandés (si Instagram)\n- Format adapté à la plateforme\n\nRédige en français authentique. Évite le jargon corporate. Parle comme une vraie personne.`;
+  },
   'pg-programme': () => {
     const ctx=getContext();
     const nom=document.getElementById('pg-nom')?.value||'';
@@ -1841,8 +2181,12 @@ async function callAI(key,resId,loadId){
       body:JSON.stringify({model:'claude-sonnet-4-6',max_tokens:2000,messages:[{role:'user',content:prompt}]})
     });
     if(!r.ok){
-      const errTxt=await r.text();
-      throw new Error('Erreur serveur ('+r.status+'): '+errTxt.substring(0,120));
+      var errTxt='';
+      try{ errTxt=await r.text(); }catch(e2){}
+      if(r.status===404){
+        throw new Error('Fonction IA introuvable (404). Le site doit être déployé via GitHub → Netlify, pas en drag & drop.');
+      }
+      throw new Error('Erreur '+r.status+': '+errTxt.substring(0,200));
     }
     const data=await r.json();
     if(data.error){throw new Error(data.error.message||'Erreur API');}
@@ -2315,12 +2659,39 @@ function getProfilContext(){
 
 // ─── PROGRAMMES & MODULES ────────────────────────────
 function switchProgTab(tab,el){
-  document.querySelectorAll('#ptab-programme,#ptab-module,#ptab-seance,#ptab-contenu,#ptab-bibliotheque').forEach(function(p){p.style.display='none';});
-  document.querySelectorAll('#prog-tabs .pt').forEach(function(t){t.classList.remove('active');});
+  ['plan','programme','module','seance','contenu','vente','email','social','bibliotheque'].forEach(function(t){
+    var p=document.getElementById('ptab-'+t);if(p)p.style.display='none';
+  });
+  document.querySelectorAll('#prog-tabs .pt').forEach(function(t){t.classList.remove('act');});
   var panel=document.getElementById('ptab-'+tab);
   if(panel)panel.style.display='block';
   if(el)el.classList.add('act');
   if(tab==='bibliotheque')loadBibliotheque();
+  if(tab==='plan')checkCtxStatus();
+}
+function checkCtxStatus(){
+  var ctx=getContext();
+  var dot=document.getElementById('prog-ctx-dot');
+  var label=document.getElementById('prog-ctx-label');
+  if(!dot||!label)return;
+  if(ctx&&ctx.length>100){
+    dot.style.background='#2ECC71';
+    var fields=[];
+    if(ctx.indexOf('IDENTIT')>-1)fields.push('Profil');
+    if(ctx.indexOf('AVATAR')>-1)fields.push('Avatar');
+    if(ctx.indexOf('OFFRE')>-1)fields.push('Offre');
+    if(ctx.indexOf('NICHE')>-1)fields.push('Niche');
+    label.textContent=(fields.length?'Contexte: '+fields.join(', ')+' — Prêt !':'Remplis Niche, Avatar et Profil d\'abord');
+  } else {
+    dot.style.background='#E8132A';
+    label.textContent='Aucun contexte — Remplis Niche, Avatar et Profil Coach d\'abord';
+  }
+}
+function showCtxPreview(){
+  var ctx=getContext();
+  if(!ctx){showToast('Remplis les sections Niche, Avatar et Profil Coach d\'abord');return;}
+  var w=window.open('','_blank','width=700,height=600,scrollbars=yes');
+  w.document.write('<pre style="font-family:monospace;padding:2rem;font-size:.8rem;line-height:1.7;white-space:pre-wrap;color:#222">'+ctx.replace(/</g,'&lt;')+'</pre>');
 }
 function loadBibliotheque(){
   var lib=JSON.parse(localStorage.getItem('v2_bibliotheque')||'[]');
@@ -2363,9 +2734,207 @@ function deleteLibItem(idx){
   loadBibliotheque();showToast('🗑️ Supprimé');
 }
 window.addEventListener('DOMContentLoaded',function(){
-  loadProfil();
+  // Load current project (includes profil fields)
+  var pid = localStorage.getItem(CURRENT_PROJECT_KEY) || 'default';
+  var raw = localStorage.getItem(getProjectStorageKey(pid));
+  if(raw){
+    loadProject(pid);
+  } else {
+    // First time — load legacy profil if exists
+    loadProfil();
+    // Save as default project
+    var projects = getProjectsList();
+    if(!projects.find(function(p){return p.id==='default';})){
+      projects.push({id:'default',name:'Mon Projet Principal',created:new Date().toLocaleDateString('fr-FR')});
+      saveProjectsList(projects);
+    }
+    localStorage.setItem(CURRENT_PROJECT_KEY,'default');
+  }
+  updateProjectBar();
+  setTimeout(checkCtxStatus, 500);
+  // Attach auto-save to all project fields
+  PROJECT_FIELDS.forEach(function(id){
+    var el = document.getElementById(id);
+    if(el) el.addEventListener('input', scheduleAutoSave);
+    if(el) el.addEventListener('change', scheduleAutoSave);
+  });
 });
 
+
+// ═══════════════════════════════════════════════════════
+// SYSTÈME DE PROJETS — Auto-save & Multi-projets
+// ═══════════════════════════════════════════════════════
+var PROJECT_FIELDS = ["n1", "n2", "n3", "avName", "avSit", "avRev", "avPain", "avDream", "offerName", "offerTransfo", "offerFmt", "offerPrice", "f1", "f2", "f3", "f4", "f5", "f6", "revGoal", "offPriceObj", "closeRate", "pricingCtx", "pg-role", "pg-task", "pg-goal", "pg-avatar", "pg-tone", "pg-excl", "prNom", "prTitre", "prVille", "prPhoto", "prAvant", "prDeclic", "prAujourdhui", "prAnnees", "prDomaines", "prCertifs", "prInternational", "prTransfoPerso", "prResultatsClients", "prPourquoi", "prVal1", "prVal2", "prVal3", "prCible", "prMission", "prStyle", "launchProg", "launchPlat", "emailInput", "spInput"];
+var CURRENT_PROJECT_KEY = 'v2_current_project';
+var PROJECTS_LIST_KEY = 'v2_projects_list';
+
+function getCurrentProjectId(){
+  return localStorage.getItem(CURRENT_PROJECT_KEY) || 'default';
+}
+
+function getProjectStorageKey(projectId){
+  return 'v2_project_' + projectId;
+}
+
+function saveProject(){
+  var pid = getCurrentProjectId();
+  var data = {};
+  PROJECT_FIELDS.forEach(function(id){
+    var el = document.getElementById(id);
+    if(el) data[id] = el.value || '';
+  });
+  // Save project name too
+  var projects = getProjectsList();
+  var proj = projects.find(function(p){return p.id===pid;});
+  data['__name'] = proj ? proj.name : 'Mon Projet';
+  data['__saved'] = new Date().toLocaleString('fr-FR');
+  localStorage.setItem(getProjectStorageKey(pid), JSON.stringify(data));
+  // Show saved indicator
+  var ind = document.getElementById('proj-save-indicator');
+  if(ind){ ind.style.display='inline'; setTimeout(function(){ind.style.display='none';}, 2500); }
+  showToast('💾 Projet sauvegardé !');
+}
+
+function loadProject(projectId){
+  var raw = localStorage.getItem(getProjectStorageKey(projectId));
+  if(!raw) return;
+  var data = JSON.parse(raw);
+  PROJECT_FIELDS.forEach(function(id){
+    var el = document.getElementById(id);
+    if(el && data[id] !== undefined) el.value = data[id];
+  });
+  localStorage.setItem(CURRENT_PROJECT_KEY, projectId);
+  updateProjectBar();
+}
+
+function getProjectsList(){
+  var raw = localStorage.getItem(PROJECTS_LIST_KEY);
+  if(!raw) return [{id:'default', name:'Mon Projet Principal', created: new Date().toLocaleDateString('fr-FR')}];
+  return JSON.parse(raw);
+}
+
+function saveProjectsList(list){
+  localStorage.setItem(PROJECTS_LIST_KEY, JSON.stringify(list));
+}
+
+function updateProjectBar(){
+  var pid = getCurrentProjectId();
+  var projects = getProjectsList();
+  var proj = projects.find(function(p){return p.id===pid;});
+  var display = document.getElementById('proj-name-display');
+  if(display) display.textContent = proj ? proj.name : 'Mon Projet';
+}
+
+function newProject(){
+  var name = prompt('Nom du nouveau projet :', 'Nouveau Projet Coach');
+  if(!name) return;
+  closeProjModal();
+  // Save current project first
+  saveProject();
+  // Create new project
+  var pid = 'proj_' + Date.now();
+  var projects = getProjectsList();
+  projects.push({id:pid, name:name, created: new Date().toLocaleDateString('fr-FR')});
+  saveProjectsList(projects);
+  localStorage.setItem(CURRENT_PROJECT_KEY, pid);
+  // Clear all fields
+  PROJECT_FIELDS.forEach(function(id){
+    var el = document.getElementById(id);
+    if(el) el.value = '';
+  });
+  updateProjectBar();
+  showToast('✦ Nouveau projet créé : ' + name);
+  go('profil', document.querySelector('.ni[onclick*=profil]'));
+}
+
+function renameProject(){
+  var pid = getCurrentProjectId();
+  var projects = getProjectsList();
+  var proj = projects.find(function(p){return p.id===pid;});
+  var current = proj ? proj.name : 'Mon Projet';
+  var name = prompt('Renommer ce projet :', current);
+  if(!name) return;
+  if(proj) proj.name = name;
+  else projects.push({id:pid, name:name, created:new Date().toLocaleDateString('fr-FR')});
+  saveProjectsList(projects);
+  updateProjectBar();
+  showToast('✏️ Projet renommé : ' + name);
+}
+
+function switchProject(){
+  var projects = getProjectsList();
+  var pid = getCurrentProjectId();
+  var listEl = document.getElementById('proj-list');
+  if(!listEl) return;
+  listEl.innerHTML = projects.map(function(p){
+    var isActive = p.id === pid;
+    var raw = localStorage.getItem(getProjectStorageKey(p.id));
+    var saved = raw ? JSON.parse(raw).__saved || '' : '';
+    return '<div style="display:flex;align-items:center;gap:.7rem;padding:.7rem .9rem;border-radius:10px;border:1.5px solid '+(isActive?'rgba(232,19,42,.3)':'rgba(200,169,81,.2)')+';background:'+(isActive?'rgba(232,19,42,.05)':'white')+'">'
+      + '<div style="flex:1">'
+      + '<div style="font-weight:700;font-size:.82rem;color:var(--dk)">'+p.name+(isActive?' <span style=\"color:var(--rose);font-size:.7rem\">● Actif</span>':'')+'</div>'
+      + '<div style="font-size:.68rem;color:var(--sage)">Créé le '+p.created+(saved?' · Sauvegardé '+saved:'')+'</div>'
+      + '</div>'
+      + (!isActive ? '<button onclick="loadProjectAndClose(\''+p.id+'\')" style="background:var(--rose);border:none;color:white;padding:.3rem .75rem;border-radius:50px;font-size:.7rem;font-weight:700;cursor:pointer">Ouvrir</button>' : '')
+      + '<button onclick="deleteProject(\''+p.id+'\')" style="background:none;border:1px solid #ddd;color:#aaa;padding:.3rem .6rem;border-radius:50px;font-size:.65rem;cursor:pointer" title="Supprimer">🗑</button>'
+      + '</div>';
+  }).join('');
+  document.getElementById('proj-modal').style.display = 'flex';
+}
+
+function loadProjectAndClose(pid){
+  closeProjModal();
+  loadProject(pid);
+  showToast('📂 Projet chargé !');
+}
+
+function closeProjModal(){
+  var m = document.getElementById('proj-modal');
+  if(m) m.style.display = 'none';
+}
+
+function deleteProject(pid){
+  var projects = getProjectsList();
+  if(projects.length <= 1){ showToast('Tu dois garder au moins 1 projet.'); return; }
+  if(!confirm('Supprimer ce projet définitivement ?')) return;
+  var newList = projects.filter(function(p){return p.id!==pid;});
+  saveProjectsList(newList);
+  localStorage.removeItem(getProjectStorageKey(pid));
+  if(getCurrentProjectId() === pid){
+    localStorage.setItem(CURRENT_PROJECT_KEY, newList[0].id);
+    loadProject(newList[0].id);
+  }
+  switchProject();
+  showToast('🗑 Projet supprimé');
+}
+
+// Auto-save every 30 seconds
+setInterval(function(){
+  var pid = getCurrentProjectId();
+  var raw = localStorage.getItem(getProjectStorageKey(pid));
+  if(raw) saveProject(); // only auto-save if project exists
+}, 30000);
+
+// Auto-save on input change (debounced)
+var autoSaveTimer;
+function scheduleAutoSave(){
+  clearTimeout(autoSaveTimer);
+  autoSaveTimer = setTimeout(saveProject, 2000);
+}
+
 </script>
+
+<!-- PROJECT MANAGER MODAL -->
+<div id="proj-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:999;display:none;align-items:center;justify-content:center">
+  <div style="background:white;border-radius:18px;padding:2rem;width:min(520px,92vw);max-height:80vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,.2)">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.2rem">
+      <div style="font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:900;color:var(--dk)">📁 Mes Projets</div>
+      <button onclick="closeProjModal()" style="background:none;border:none;font-size:1.3rem;cursor:pointer;color:#aaa">✕</button>
+    </div>
+    <div id="proj-list" style="display:flex;flex-direction:column;gap:.6rem;margin-bottom:1.2rem"></div>
+    <button onclick="newProject()" style="width:100%;background:var(--rose);border:none;color:white;padding:.65rem;border-radius:10px;font-size:.82rem;font-weight:700;cursor:pointer">✦ Créer un nouveau projet</button>
+  </div>
+</div>
+
 </body>
 </html>
